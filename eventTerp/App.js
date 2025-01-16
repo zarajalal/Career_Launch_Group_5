@@ -1,20 +1,25 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+
+// In App.js in a new project
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import LandingScreen from "../eventTerp/screens/Landing.js";
+import AddEvent from "../eventTerp/screens/AddEvent.js";
+import Swipes from "../eventTerp/screens/Swipes.js";
+import Calendar from "../eventTerp/screens/Calendar.js";
+
+
+const Stack = createNativeStackNavigator()
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+  return(
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name='Home' component={LandingScreen}/>
+        <Stack.Screen name='Add Event' component={AddEvent}/>
+        <Stack.Screen name='Swipes' component={Swipes}/>
+        <Stack.Screen name='Calendar' component={Calendar}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
