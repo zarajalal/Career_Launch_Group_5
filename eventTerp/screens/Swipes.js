@@ -4,7 +4,7 @@ import React from 'react'
 export default function AddEvent() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Add Event</Text>
+      <Text style={styles.text}>Swipes</Text>
     </View>
   );
 }

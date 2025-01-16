@@ -6,10 +6,6 @@ import React from 'react'
 export default function LandingScreen ({navigation}) {
   return (
     <View style={styles.container}>
-        <Button title='Next Page' 
-        onPress={() => navigation.navigate('Add Event')}
-        />
-
       <Text style={styles.header}>EventTerp</Text>
       <Text style={styles.text2}>Never Miss Another Event!</Text>
       <View style={styles.box} />

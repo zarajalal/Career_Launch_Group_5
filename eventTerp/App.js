@@ -1,7 +1,8 @@
 
 // In App.js in a new project
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StyleSheet, Text, View } from 'react-native';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 import LandingScreen from "../eventTerp/screens/Landing.js";
 import AddEvent from "../eventTerp/screens/AddEvent.js";
@@ -9,17 +10,17 @@ import Swipes from "../eventTerp/screens/Swipes.js";
 import Calendar from "../eventTerp/screens/Calendar.js";
 
 
-const Stack = createNativeStackNavigator()
+const Tab = createBottomTabNavigator();
 
 export default function App() {
   return(
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name='Home' component={LandingScreen}/>
-        <Stack.Screen name='Add Event' component={AddEvent}/>
-        <Stack.Screen name='Swipes' component={Swipes}/>
-        <Stack.Screen name='Calendar' component={Calendar}/>
-      </Stack.Navigator>
+      <Tab.Navigator>
+        <Tab.Screen name='Home' component={LandingScreen}/>
+        <Tab.Screen name='Add Event' component={AddEvent}/>
+        <Tab.Screen name='Swipes' component={Swipes}/>
+        <Tab.Screen name='Calendar' component={Calendar}/>
+      </Tab.Navigator>
     </NavigationContainer>
   );
 }
