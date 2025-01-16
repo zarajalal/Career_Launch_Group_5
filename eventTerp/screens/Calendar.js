@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //Alex
 
 import { View, Text, StyleSheet } from 'react-native'
@@ -21,3 +22,8 @@ const styles = StyleSheet.create({
   }
 
 })
+=======
+//Alex
+//lets go
+
+>>>>>>> 7ae7a5a9f97acfd0820295552c91ac9e589c3cbd
