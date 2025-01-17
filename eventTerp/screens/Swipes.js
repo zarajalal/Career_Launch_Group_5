@@ -1,7 +1,7 @@
 // Juhi
 import { View, Text, StyleSheet } from 'react-native'
 import React from 'react'
-export default function AddEvent() {
+export default function Swipes() {
   return (
     <View style={styles.container}>
       <Text style={styles.text}>Swipes</Text>
@@ -15,8 +15,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text:{
-    fontSize:24,
-    fontWeight:'bold',
+    fontFamily: 'Quicksand-SemiBold',
+    fontSize: 24,
   }
 
 })
