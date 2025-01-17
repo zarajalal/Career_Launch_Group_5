@@ -3,12 +3,18 @@
 import { View, Text, StyleSheet, Image, Button } from 'react-native'
 import React from 'react'
 
+const terpImg= require('../assets/terpimg.png')
+
 export default function LandingScreen ({navigation}) {
   return (
     <View style={styles.container}>
       <Text style={styles.header}>EventTerp</Text>
       <Text style={styles.text2}>Never Miss Another Event!</Text>
       <View style={styles.box} />
+      <Image
+        source={terpImg}
+        style={styles.image}
+        />
       <Text style={styles.check}>✅</Text>
       <Text style={styles.x}>❌</Text>    
     </View>
@@ -26,13 +32,13 @@ const styles= StyleSheet.create({
     fontSize: 65,
     fontWeight: 'bold',
     textAlign: 'center',
-    top: 60,
+    top: 50,
   },
   text2: {
     color: 'black',
     fontSize:25,
     textAlign:'center',
-    top: 65,
+    top: 58,
     fontStyle: 'italic'
 
   },
@@ -42,12 +48,12 @@ const styles= StyleSheet.create({
     borderRadius:40,
     backgroundColor: 'white',
     marginLeft: 50,
-    marginTop:130
+    marginTop:90
   },
   image:{
     position:'absolute',
     resizeMode:'center',
-    transform: [{ translateX: -190 }, { translateY: -19 }]
+    transform: [{ translateX: -190 }, { translateY: -45 }]
   },
   check:{
     fontSize:65,
