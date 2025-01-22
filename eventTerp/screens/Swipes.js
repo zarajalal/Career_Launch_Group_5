@@ -10,6 +10,10 @@ export default function Swipes() {
     <View style={styles.container}>
       <Text style={styles.text}>Swipes</Text>
       <Card card = {card}/>
+      <View style={styles.options}>
+        <Image source={require('../assets/x-mark.png')}/>
+        <Image source={require('../assets/check-mark.png')}/>
+      </View>
     </View>
   );
 }
@@ -39,9 +43,9 @@ const styles = StyleSheet.create({
   },
   card: {
     // flex: .8,
-    height: '90%',
+    height: '80%',
     width: '90%',
-    marginTop: '5%',
+    marginTop: 10,
     borderRadius: 8,
     shadowRadius: 25,
     shadowColor: '#000000',
@@ -51,5 +55,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#FFFFFF'
   },
-
+  options: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    width: '90%',
+    marginTop: 10,
+  },
 })
