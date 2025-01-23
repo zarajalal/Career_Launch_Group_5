@@ -2,6 +2,7 @@
 // In App.js in a new project
 import { NavigationContainer } from '@react-navigation/native';
 import { StyleSheet, Text, View } from 'react-native';
+import { useFonts } from 'expo-font';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { AntDesign } from '@expo/vector-icons'
 
@@ -23,6 +24,14 @@ const Tabs =() => {
 }
 
 export default function App() {
+  const [loaded, error] = useFonts({
+    'Quicksand-Light': require('./assets/fonts/Quicksand-Light.ttf'),
+    'Quicksand-Regular': require('./assets/fonts/Quicksand-Regular.ttf'),
+    'Quicksand-Medium': require('./assets/fonts/Quicksand-Medium.ttf'),
+    'Quicksand-SemiBold': require('./assets/fonts/Quicksand-SemiBold.ttf'),
+    'Quicksand-Bold': require('./assets/fonts/Quicksand-Bold.ttf'),
+  });
+
   return(
     <NavigationContainer>
       <Tab.Navigator>
