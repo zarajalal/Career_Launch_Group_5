@@ -8,7 +8,6 @@ export default function Swipes() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Swipes</Text>
       <Card card = {card}/>
       <View style={styles.options}>
         <Image source={require('../assets/x-mark.png')}/>
@@ -22,6 +21,11 @@ const Card = ({ card }) => {
   return (
     <View style={styles.card}>
       <Image source={card.image} style={styles.cardImage} />
+      <View style={styles.details}>
+        <Text style={styles.text}>[EVENT NAME]</Text>
+        <Text style={{fontSize: 18, fontFamily: 'Quicksand-Light'}}>[EVENT LOCATION]</Text>
+        <Text style={{fontSize: 18, fontFamily: 'Quicksand-Light'}}>[EVENT DATE]</Text>
+      </View>
     </View>
   );
 };
@@ -42,10 +46,9 @@ const styles = StyleSheet.create({
     resizeMode: 'contain'
   },
   card: {
-    // flex: .8,
-    height: '80%',
+    height: '85%',
     width: '90%',
-    marginTop: 10,
+    marginTop: 20,
     borderRadius: 8,
     shadowRadius: 25,
     shadowColor: '#000000',
@@ -60,6 +63,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: '90%',
-    marginTop: 10,
+    marginTop: 15,
   },
+  details: {
+    // justifyContent: start,
+    width: '100%',
+    padding: 10,
+  }
 })
