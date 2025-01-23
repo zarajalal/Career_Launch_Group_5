@@ -7,7 +7,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { AntDesign } from '@expo/vector-icons'
 
 import LandingScreen from "../eventTerp/screens/Landing.js";
-import AddEvent from "../eventTerp/screens/AddEvent.js";
 import Swipes from "../eventTerp/screens/Swipes.js";
 import Calendar from "../eventTerp/screens/Calendar.js";
 import Interests from "../eventTerp/screens/Interests.js";
@@ -43,14 +42,6 @@ export default function App() {
           }}
           />
 
-
-        <Tab.Screen 
-          name='Add Event' 
-          component={AddEvent}
-          options={{
-            tabBarIcon: ({focused}) => 
-            <AntDesign name='plus' size='20' color='#ffd200'  />,
-          }}/>
         <Tab.Screen 
           name='Interests' 
           component={Interests}
@@ -66,8 +57,6 @@ export default function App() {
           tabBarIcon: ({focused}) => <AntDesign name='arrowright' size='20' color='#ffd200' />,
         }}
         />
-
-
 
         <Tab.Screen 
         name='Calendar' 
