@@ -22,7 +22,6 @@ export default function Interests() {
 
   return (
     <View style={styles.container}>
-      //Render interests if the list is not empty
       {interests.length > 0 && (
         <View style={styles.intlist}>
           {interests.map((interest, index) => (
