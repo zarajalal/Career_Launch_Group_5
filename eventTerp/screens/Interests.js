@@ -5,7 +5,6 @@ import React, { useState } from 'react';
 
 export default function Interests() {
   const [interests, setInterests]=useState([]);
-
   
   const saveInterest = (title) => {
     if (!interests.includes(title)) {
@@ -23,7 +22,7 @@ export default function Interests() {
 
   return (
     <View style={styles.container}>
-      {/* Render interests if the list is not empty */}
+      //Render interests if the list is not empty
       {interests.length > 0 && (
         <View style={styles.intlist}>
           {interests.map((interest, index) => (
@@ -122,7 +121,8 @@ const styles = StyleSheet.create({
     position:'center',
     margin:5,
     position:'relative',
-    left:15
+    left:15,
+    fontFamily: 'Quicksand',
 
   },
   heading:{
@@ -130,7 +130,8 @@ const styles = StyleSheet.create({
     fontWeight:'bold',
     backgroundColor:'red',
     top:'30',
-    position:'absolute'
+    position:'absolute',
+    fontFamily: 'Quicksand-Bold',
 },
 button:{
   backgroundColor:'gold',
@@ -144,5 +145,6 @@ buttontext:{
   fontWeight:'bold',
   position:'relative',
   top:15,
+  fontFamily: 'Quicksand-SemiBold',
 },
 })

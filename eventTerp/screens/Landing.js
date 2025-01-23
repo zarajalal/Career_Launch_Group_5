@@ -33,13 +33,15 @@ const styles= StyleSheet.create({
     fontWeight: 'bold',
     textAlign: 'center',
     top: 50,
+    fontFamily: 'Quicksand-Bold',
   },
   text2: {
     color: 'black',
     fontSize:25,
     textAlign:'center',
     top: 58,
-    fontStyle: 'italic'
+    fontStyle: 'italic',
+    fontFamily: 'Quicksand-SemiBold',
 
   },
   box: {
