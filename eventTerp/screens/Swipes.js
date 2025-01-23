@@ -1,8 +1,8 @@
 // Juhi
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
-import React from 'react'
-export default function Swipes() {
+import React, { useState } from 'react'
 
+export default function Swipes() {
   //0=name, 1=location, 2=date, 3=time, 4=host, 5=tags
   const data = [
     ["Cosmic Bowling", "Terpzone", "2/1/25", "20:00", "Terpzone, Adele H. Stamp Student Union-Center for Campus Life", "Social, Sports/Recreation, Entertainment"],
@@ -30,23 +30,63 @@ export default function Swipes() {
     ["Suit Up and Be Civil", "Samuel Riggs IV Alumni Center", "2/11/25", "18:00", "American Society of Civil Engineers", "Networking"]
 ]
 
-  const card = {
+  const names = data.map((row) => {
+    return row[0];
+  });
+
+  const locations = data.map((row) => {
+    return row[1];
+  });
+
+  const dates = data.map((row) => {
+    return row[2];
+  });
+
+  const times = data.map((row) => {
+    return row[3];
+  });
+
+  //2d array
+  const tags = data.map((row) => {
+    let multTags = row[5].split(', ');
+    return multTags;
+  });
+
+  const [index, setIndex] = useState(0);
+
+  let card = {
     image: require('../assets/terpimg.png'),
+    name: names[index],
+    location: locations[index],
+    date: dates[index],
+    time: times[index],
+    //can be multiple tags per event
+    tag: tags[index],
   };
 
   return (
     <View style={styles.container}>
-      <Card card = {card}/>
+      <Card card = {card} index = {index}/>
       <View style={styles.options}>
 
         <TouchableOpacity onPress={ () => {
-          console.log('User declined this event.')
+          console.log('User declined this event.');
+          if(index < names.length-1){
+            setIndex(index+1);
+          }else{
+            setIndex(0);
+          }
         }}>        
           <Image source={require('../assets/x-mark.png')}/>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={ () => {
-          console.log('User selected this event.')
+          console.log('User selected this event.');
+          if(index < names.length-1){
+            setIndex(index+1);
+          }else{
+            setIndex(0);
+          }
         }}>
           <Image source={require('../assets/check-mark.png')}/>
         </TouchableOpacity>
@@ -60,9 +100,10 @@ const Card = ({ card }) => {
     <View style={styles.card}>
       <Image source={card.image} style={styles.cardImage} />
       <View style={styles.details}>
-        <Text style={styles.text}>[EVENT NAME]</Text>
-        <Text style={{fontSize: 18, fontFamily: 'Quicksand-Light'}}>[EVENT LOCATION]</Text>
-        <Text style={{fontSize: 18, fontFamily: 'Quicksand-Light'}}>[EVENT DATE]</Text>
+        <Text style={styles.text}>{card.name}</Text>
+        <Text style={{fontSize: 18, fontFamily: 'Quicksand-Light'}}>{card.location}</Text>
+        <Text style={{fontSize: 18, fontFamily: 'Quicksand-Light'}}>{card.date}</Text>
+        <Text style={{fontSize: 18, fontFamily: 'Quicksand-Light'}}>{card.time}</Text>
       </View>
     </View>
   );
