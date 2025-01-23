@@ -1,5 +1,5 @@
 // Juhi
-import { View, Text, StyleSheet, Image } from 'react-native'
+import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 export default function Swipes() {
   const card = {
@@ -10,8 +10,18 @@ export default function Swipes() {
     <View style={styles.container}>
       <Card card = {card}/>
       <View style={styles.options}>
-        <Image source={require('../assets/x-mark.png')}/>
-        <Image source={require('../assets/check-mark.png')}/>
+
+        <TouchableOpacity onPress={ () => {
+          console.log('User declined this event.')
+        }}>        
+          <Image source={require('../assets/x-mark.png')}/>
+        </TouchableOpacity>
+
+        <TouchableOpacity onPress={ () => {
+          console.log('User selected this event.')
+        }}>
+          <Image source={require('../assets/check-mark.png')}/>
+        </TouchableOpacity>
       </View>
     </View>
   );
