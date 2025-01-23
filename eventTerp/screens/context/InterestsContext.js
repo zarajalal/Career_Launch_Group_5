@@ -1,9 +1,9 @@
-import React, {createContext, useContext, useState, useEffect} from 'react';
+import React, {createContext, useContext, useState} from 'react';
 
 const InterestsContext = createContext();
 
 export const InterestsProvider=({children}) => {
-    const [interests, setInterests] =useState([]);
+    const [interests, setInterests] = useState([]);
 
     const saveInterest = (title) => {
         setInterests((prevInts) => {
@@ -21,4 +21,10 @@ export const InterestsProvider=({children}) => {
       );
     };
     
-    export const useInterests = () => useContext(InterestsContext);
+    export const useInterests = () => {
+      const context = useContext(InterestsContext);
+      if (!context) {
+        throw new Error('useInterests must be used within an InterestsProvider');
+      }
+      return context;
+    };

@@ -17,8 +17,6 @@ import React from "react";
 import { InterestsProvider } from "../eventTerp/screens/context/InterestsContext.js";
 import interests from "../eventTerp/screens/Interests.js";
 
-
-
 //
 
 const Tab = createBottomTabNavigator();

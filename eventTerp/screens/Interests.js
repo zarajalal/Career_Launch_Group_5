@@ -1,24 +1,11 @@
 import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react';
-
-
+import { useInterests } from './context/InterestsContext.js'
 
 export default function Interests() {
-  const [interests, setInterests]=useState([]);
+  const {interests, saveInterest}= useInterests();
+
   
-  const saveInterest = (title) => {
-    if (!interests.includes(title)) {
-      setInterests((prevInts) => {
-        const updatedInterests = [...prevInts, title];
-        console.log(updatedInterests); 
-        return updatedInterests; 
-      });
-    }
-    if (interests.includes(title)){
-      setInterests((prevInts) => prevInts.filter((interests) => interests !== title )
-    )
-    }
-  };
 
   return (
     <View style={styles.container}>
