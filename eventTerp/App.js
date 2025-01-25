@@ -17,7 +17,8 @@ import React from "react";
 import { InterestsProvider } from "../eventTerp/screens/context/InterestsContext.js";
 import interests from "../eventTerp/screens/Interests.js";
 
-//
+//Global State for Selected
+import { SelectedProvider } from "../eventTerp/screens/context/SelectedContext.js";
 
 const Tab = createBottomTabNavigator();
 
@@ -33,50 +34,52 @@ export default function App() {
 
   return (
     <InterestsProvider>
-      <NavigationContainer>
-        <Tab.Navigator
-          screenOptions={{
-            tabBarStyle: { backgroundColor: "gold" },
-          }}
-        >
-          <Tab.Screen
-            name="Home"
-            component={LandingScreen}
-            options={{
-              tabBarIcon: ({ focused }) => (
-                <AntDesign name="home" size={20} color={"black"} />
-              ),
+      <SelectedProvider>
+        <NavigationContainer>
+          <Tab.Navigator
+            screenOptions={{
+              tabBarStyle: { backgroundColor: "gold" },
             }}
-          />
-          <Tab.Screen
-            name="Interests"
-            component={Interests}
-            options={{
-              tabBarIcon: ({ focused }) => (
-                <AntDesign name="hearto" size={20} color={"black"} />
-              ),
-            }}
-          />
-          <Tab.Screen
-            name="Swipes"
-            component={Swipes}
-            options={{
-              tabBarIcon: ({ focused }) => (
-                <AntDesign name="arrowright" size={20} color={"black"} />
-              ),
-            }}
-          />
-          <Tab.Screen
-            name="Calendar"
-            component={Calendar}
-            options={{
-              tabBarIcon: ({ focused }) => (
-                <AntDesign name="calendar" size={20} color={"black"} />
-              ),
-            }}
-          />
-        </Tab.Navigator>
-      </NavigationContainer>
+          >
+            <Tab.Screen
+              name="Home"
+              component={LandingScreen}
+              options={{
+                tabBarIcon: ({ focused }) => (
+                  <AntDesign name="home" size={20} color={"black"} />
+                ),
+              }}
+            />
+            <Tab.Screen
+              name="Interests"
+              component={Interests}
+              options={{
+                tabBarIcon: ({ focused }) => (
+                  <AntDesign name="hearto" size={20} color={"black"} />
+                ),
+              }}
+            />
+            <Tab.Screen
+              name="Swipes"
+              component={Swipes}
+              options={{
+                tabBarIcon: ({ focused }) => (
+                  <AntDesign name="arrowright" size={20} color={"black"} />
+                ),
+              }}
+            />
+            <Tab.Screen
+              name="Calendar"
+              component={Calendar}
+              options={{
+                tabBarIcon: ({ focused }) => (
+                  <AntDesign name="calendar" size={20} color={"black"} />
+                ),
+              }}
+            />
+          </Tab.Navigator>
+        </NavigationContainer>
+      </SelectedProvider>
     </InterestsProvider>
   );
 }

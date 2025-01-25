@@ -1,6 +1,8 @@
 // Juhi
 import { View, Text, StyleSheet, Image, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
+import { useInterests } from './context/InterestsContext.js'
+import { useSelected } from './context/SelectedContext.js'
 
 export default function Swipes() {
   //0=name, 1=location, 2=date, 3=time, 4=host, 5=tags
@@ -54,6 +56,12 @@ export default function Swipes() {
 
   const [index, setIndex] = useState(0);
 
+  const [interestedEvents, setInterestedEvents] = useState([]);
+
+  const { interests, saveInterest } = useInterests();
+
+  const {selected, saveSelected}= useSelected();
+
   let card = {
     image: require('../assets/terpimg.png'),
     name: names[index],
@@ -64,6 +72,27 @@ export default function Swipes() {
     tag: tags[index],
   };
 
+  const containsTag = (tagList, i) => {
+    return i > index && interests.some((interest) => tagList.includes(interest));
+  }
+  
+  const findNextIndex = () => {
+    if(interests.length>0){
+      if(tags.indexOf(tags.find(containsTag), index) > -1){
+        setIndex(tags.findIndex(containsTag));
+      }else{
+        setIndex(0);
+        setIndex(tags.findIndex(containsTag));
+      }
+    }else{
+      if(index<names.length-1){
+        setIndex(i=>i+1);
+      }else{
+        setIndex(0);
+      }
+    }
+  }
+
   return (
     <View style={styles.container}>
       <Card card = {card} index = {index}/>
@@ -71,22 +100,25 @@ export default function Swipes() {
 
         <TouchableOpacity onPress={ () => {
           console.log('User declined this event.');
-          if(index < names.length-1){
-            setIndex(index+1);
-          }else{
-            setIndex(0);
-          }
+          console.log(interests);
+          // if(index < names.length-1){
+          //   setIndex(index+1);
+          // }else{
+          //   setIndex(0);
+          // }
+          findNextIndex();
         }}>        
           <Image source={require('../assets/x-mark.png')}/>
         </TouchableOpacity>
 
         <TouchableOpacity onPress={ () => {
           console.log('User selected this event.');
-          if(index < names.length-1){
-            setIndex(index+1);
-          }else{
-            setIndex(0);
-          }
+          // if(index < names.length-1){
+          //   setIndex(index+1);
+          // }else{
+          //   setIndex(0);
+          // }
+          findNextIndex();
         }}>
           <Image source={require('../assets/check-mark.png')}/>
         </TouchableOpacity>
@@ -108,6 +140,7 @@ const Card = ({ card }) => {
     </View>
   );
 };
+
 
 const styles = StyleSheet.create({
   container:{
@@ -145,7 +178,6 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   details: {
-    // justifyContent: start,
     width: '100%',
     padding: 10,
   }
