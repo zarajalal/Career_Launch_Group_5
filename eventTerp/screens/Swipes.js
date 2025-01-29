@@ -101,11 +101,7 @@ export default function Swipes() {
         <TouchableOpacity onPress={ () => {
           console.log('User declined this event.');
           console.log(interests);
-          // if(index < names.length-1){
-          //   setIndex(index+1);
-          // }else{
-          //   setIndex(0);
-          // }
+
           findNextIndex();
         }}>        
           <Image source={require('../assets/x-mark.png')}/>
@@ -113,11 +109,12 @@ export default function Swipes() {
 
         <TouchableOpacity onPress={ () => {
           console.log('User selected this event.');
-          // if(index < names.length-1){
-          //   setIndex(index+1);
-          // }else{
-          //   setIndex(0);
-          // }
+          if(selected.length==0 || !selected.some(row => row.includes(names[index]))){
+            console.log("new event added!")
+            const newRow = [names[index], locations[index], dates[index], times[index]];
+            saveSelected(newRow);
+          }
+          console.log(selected);
           findNextIndex();
         }}>
           <Image source={require('../assets/check-mark.png')}/>

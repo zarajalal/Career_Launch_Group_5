@@ -4,6 +4,7 @@ import { View, Text, StyleSheet,  Pressable, Modal, Button} from 'react-native'
 import React from 'react'
 import {useState} from 'react'
 import {Calendar} from 'react-native-calendars';
+import { useSelected } from './context/SelectedContext.js'
 
 export default function Calender() {
 
