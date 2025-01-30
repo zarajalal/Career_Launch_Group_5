@@ -3,25 +3,11 @@
 import { View, Text, StyleSheet, Pressable, Modal, Button } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { Calendar } from 'react-native-calendars';
-import eventList from './CVS_Data.json';
 
 export default function CalendarComponent() {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState({});
 
-  useEffect(() => {
-    const formattedDates = {};
-
-    eventList.forEach(([name, location, date, startTime, host, tags]) => {
-      if (!formattedDates[date]) {
-        formattedDates[date] = { marked: true, dots: [{ color: "blue" }] };
-      } else {
-        formattedDates[date].dots.push({ color: "blue" });
-      }
-    });
-
-    setSelected(formattedDates);
-  }, []);
 
   function handleOnPress() {
     setOpen(!open);
