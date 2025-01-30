@@ -1,21 +1,33 @@
 //Alex
 
-import { View, Text, StyleSheet,  Pressable, Modal, Button} from 'react-native'
-import React from 'react'
-import {useState} from 'react'
-import {Calendar} from 'react-native-calendars';
-import { useSelected } from './context/SelectedContext.js'
+import { View, Text, StyleSheet, Pressable, Modal, Button } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Calendar } from 'react-native-calendars';
+import eventList from './CVS_Data.json';
 
-export default function Calender() {
+export default function CalendarComponent() {
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState({});
 
-  const [open, setOpen] = useState(false)
-  const [selected, setSelected] = useState('');
+  useEffect(() => {
+    const formattedDates = {};
 
+    eventList.forEach(([name, location, date, startTime, host, tags]) => {
+      if (!formattedDates[date]) {
+        formattedDates[date] = { marked: true, dots: [{ color: "blue" }] };
+      } else {
+        formattedDates[date].dots.push({ color: "blue" });
+      }
+    });
 
-  function handleOnPress () {
+    setSelected(formattedDates);
+  }, []);
+
+  function handleOnPress() {
     setOpen(!open);
   }
-  
+
+
   return (
 
     <View style={styles.pageWrap}>
@@ -54,15 +66,10 @@ export default function Calender() {
 
                 current={'2025-01-024'}
 
-                markingType='custom'
+                markingType={"multi-dot"}
 
                 markedDates={{
-                  [selected]: {selected: true, disableTouchEvent: false, selectedDotColor: 'orange'},
-                  '2025-01-27': {selected: true, marked: true, selectedColor: 'rgb(255, 65, 65)'},
-                  '2025-01-31': {selected: true, marked: true},
-                  '2025-02-01': {customStyles:{container:{backgroundColor: 'orange', elevation: 2},text:{color:'white',fontWeight:'bold'}}},
-                  '2025-02-14': {selected: true, marked: true, selectedColor: 'rgb(255, 65, 65)'},
-                  
+                  [selected]: {selected: true, disableTouchEvent: true, selectedDotColor: 'rgb(245, 110, 110)'},
                 }}
               />
 
